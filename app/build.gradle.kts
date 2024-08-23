@@ -33,6 +33,10 @@ android {
     kotlinOptions {
         jvmTarget = "1.8"
     }
+
+    buildFeatures{
+        viewBinding = true
+    }
 }
 
 dependencies {
@@ -44,4 +48,14 @@ dependencies {
     testImplementation("junit:junit:4.13.2")
     androidTestImplementation("androidx.test.ext:junit:1.2.1")
     androidTestImplementation("androidx.test.espresso:espresso-core:3.6.1")
+
+
+    // Fragment
+    implementation ("androidx.fragment:fragment-ktx:1.8.2")
+    // Activity -> Esta libreria permite un viewmodel dentro de un activity de una manera mas sencilla
+    implementation ("androidx.activity:activity-ktx:1.9.1")
+    // ViewModel
+    implementation ("androidx.lifecycle:lifecycle-viewmodel-ktx:2.8.4")
+    // LiveData
+    implementation ("androidx.lifecycle:lifecycle-livedata-ktx:2.8.4")
 }
