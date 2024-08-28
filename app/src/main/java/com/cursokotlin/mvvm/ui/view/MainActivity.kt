@@ -1,4 +1,4 @@
-package com.cursokotlin.mvvm.view
+package com.cursokotlin.mvvm.ui.view
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -7,7 +7,7 @@ import android.widget.TextView
 import androidx.activity.viewModels
 import androidx.lifecycle.Observer
 import com.cursokotlin.mvvm.databinding.ActivityMainBinding
-import com.cursokotlin.mvvm.viewmodel.QuoteViewModel
+import com.cursokotlin.mvvm.ui.viewmodel.QuoteViewModel
 
 class MainActivity : AppCompatActivity() {
 

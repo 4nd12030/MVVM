@@ -1,9 +1,9 @@
-package com.cursokotlin.mvvm.viewmodel
+package com.cursokotlin.mvvm.ui.viewmodel
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.cursokotlin.mvvm.model.QuoteModel
-import com.cursokotlin.mvvm.model.QuoteProvider
+import com.cursokotlin.mvvm.data.model.QuoteModel
+import com.cursokotlin.mvvm.data.model.QuoteProvider
 
 class QuoteViewModel: ViewModel() {
     //LiveData es un tipo de dato al cual el activity se puede conectar para saber cuadno hay un cambio en el modelo
