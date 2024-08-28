@@ -4,16 +4,17 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.cursokotlin.mvvm.data.domain.GetQuotesUseCase
+import com.cursokotlin.mvvm.data.domain.GetRandomQuoteUseCase
 import com.cursokotlin.mvvm.data.model.QuoteModel
-import com.cursokotlin.mvvm.data.model.QuoteProvider
 import kotlinx.coroutines.launch
 
 class QuoteViewModel: ViewModel() {
     //LiveData es un tipo de dato al cual el activity se puede conectar para saber cuadno hay un cambio en el modelo
-    val quoteModel = MutableLiveData<QuoteModel>()
+    val quoteModel = MutableLiveData<QuoteModel?>()
     val isLoading = MutableLiveData<Boolean>()
 
     var getQuoseUseCase = GetQuotesUseCase()
+    var getRandomQuoteUseCase = GetRandomQuoteUseCase()
 
     //Este metodo sera al que acceda nuestra vista
     fun randomQuote(){
@@ -22,7 +23,12 @@ class QuoteViewModel: ViewModel() {
         //La nueva cita se añade a la variable livedata con postValue() para que la vista reconozca el cambio y lo pinte
            //quoteModel.postValue(currentQuote)
 
-
+        isLoading.postValue(true)
+        val quote = getRandomQuoteUseCase()
+        if(quote != null){
+            quoteModel.postValue(quote)
+        }
+        isLoading.postValue(false)
 
     }
 

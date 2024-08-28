@@ -43,7 +43,7 @@ class MainActivity : AppCompatActivity() {
 
         //View Model -> Suscribe el cambio en la view mediante la funcion observe()
         quoteViewModel.quoteModel.observe(this, Observer { currentQuote ->
-            tvQuote.text = currentQuote.quote
+            tvQuote.text = currentQuote!!.quote
             tvAuthor.text = currentQuote.author
         })
 //        quoteViewModel.quoteModel.observe(this){
