@@ -1,4 +1,4 @@
-package com.cursokotlin.mvvm
+package com.cursokotlin.mvvm.view
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -20,6 +20,7 @@ class MainActivity : AppCompatActivity() {
     //View Model
     private val quoteViewModel: QuoteViewModel by viewModels()
 
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         //(View Binding) -> Inicializa la variable
@@ -30,6 +31,7 @@ class MainActivity : AppCompatActivity() {
         viewContainer = binding.viewContainer
         tvQuote = binding.tvQuote
         tvAuthor = binding.tvAuthor
+
 
         //View Model -> Suscribe el cambio en la view mediante la funcion observe()
         quoteViewModel.quoteModel.observe(this, Observer { currentQuote ->
@@ -43,7 +45,12 @@ class MainActivity : AppCompatActivity() {
 
         //La accion se detona cada que se toque la pantalla
         viewContainer.setOnClickListener { quoteViewModel.randomQuote() }
+
     }
+
+
+
+
 
 
 
