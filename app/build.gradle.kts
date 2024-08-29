@@ -42,8 +42,9 @@ android {
         viewBinding = true
     }
 
-
 }
+
+val roomVersion= "2.6.1"
 
 dependencies {
 
@@ -76,6 +77,13 @@ dependencies {
     //Dagger Hilt
     implementation("com.google.dagger:hilt-android:2.51.1")
     ksp("com.google.dagger:hilt-android-compiler:2.51.1")
+
+    //4ta parte
+    //Room
+    implementation("androidx.room:room-ktx:$roomVersion")
+    implementation("androidx.room:room-runtime:$roomVersion")
+    // To use Kotlin Symbol Processing (KSP)
+    ksp("androidx.room:room-compiler:$roomVersion")
 
 }
 
