@@ -1,6 +1,10 @@
 plugins {
     id("com.android.application")
     id("org.jetbrains.kotlin.android")
+
+    //Aplicando el complemento de Gradle
+    id("com.google.devtools.ksp")
+    id("com.google.dagger.hilt.android")
 }
 
 android {
@@ -37,6 +41,8 @@ android {
     buildFeatures{
         viewBinding = true
     }
+
+
 }
 
 dependencies {
@@ -65,4 +71,12 @@ dependencies {
     implementation("com.squareup.retrofit2:converter-gson:2.9.0")
     //Corrutinas
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.8.1")
+
+    //3ra parte
+    //Dagger Hilt
+    implementation("com.google.dagger:hilt-android:2.51.1")
+    ksp("com.google.dagger:hilt-android-compiler:2.51.1")
+
 }
+
+

@@ -11,7 +11,10 @@ import androidx.core.view.isVisible
 import androidx.lifecycle.Observer
 import com.cursokotlin.mvvm.databinding.ActivityMainBinding
 import com.cursokotlin.mvvm.ui.viewmodel.QuoteViewModel
+import dagger.hilt.android.AndroidEntryPoint
 
+
+@AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
 
     //View Binding -> Declaracion de variables
@@ -23,7 +26,6 @@ class MainActivity : AppCompatActivity() {
 
     //View Model
     private val quoteViewModel: QuoteViewModel by viewModels()
-
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

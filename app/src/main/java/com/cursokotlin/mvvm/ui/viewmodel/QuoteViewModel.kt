@@ -3,18 +3,27 @@ package com.cursokotlin.mvvm.ui.viewmodel
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.cursokotlin.mvvm.data.domain.GetQuotesUseCase
-import com.cursokotlin.mvvm.data.domain.GetRandomQuoteUseCase
+import com.cursokotlin.mvvm.domain.GetQuotesUseCase
+import com.cursokotlin.mvvm.domain.GetRandomQuoteUseCase
 import com.cursokotlin.mvvm.data.model.QuoteModel
+import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
+import javax.inject.Inject
 
-class QuoteViewModel: ViewModel() {
+
+@HiltViewModel
+class QuoteViewModel @Inject constructor(
+    //Clases a inyectar
+    private val getQuotesUseCase: GetQuotesUseCase,
+    private val getRandomQuoteUseCase: GetRandomQuoteUseCase
+
+): ViewModel() {
     //LiveData es un tipo de dato al cual el activity se puede conectar para saber cuadno hay un cambio en el modelo
     val quoteModel = MutableLiveData<QuoteModel?>()
     val isLoading = MutableLiveData<Boolean>()
 
-    var getQuoseUseCase = GetQuotesUseCase()
-    var getRandomQuoteUseCase = GetRandomQuoteUseCase()
+//    var getQuoseUseCase = GetQuotesUseCase()
+//    var getRandomQuoteUseCase = GetRandomQuoteUseCase()
 
     //Este metodo sera al que acceda nuestra vista
     fun randomQuote(){
@@ -35,7 +44,7 @@ class QuoteViewModel: ViewModel() {
     fun onCreate() {
         viewModelScope.launch {
             isLoading.postValue(true)
-            val result = getQuoseUseCase()
+            val result = getQuotesUseCase()
 
             //Asigna la primera cita a la pantalla cuando el usuario inicia la aplicacion
             if(result.isNotEmpty()){
